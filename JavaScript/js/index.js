@@ -1,40 +1,36 @@
 /**
  * ==============================
- * LESSON: Inheritance
+ * LESSON: Constructor
  * ==============================
  */
-// 1. Property
-const o = { a: 1, b: 2, __proto__: { b: 3, c: 4 } };
+// Cach 1: đưa getValue() thành 1 func
+// const boxPrototype = {
+//   getValue() {
+//     return this.value;
+//   },
+// };
+// const boxes = [
+//   { new Box(1) },
+//   { value: 2, __proto__: boxPrototype },
+//   { value: 3, __proto__: boxPrototype },
+// ];
 
-console.log(o.a); // 1
+// Cách 2: khởi tạo object từ constructor
+function Box(value) {
+  return (this.value = value);
+}
 
-console.log(o.b); // 2
-// NOTE: b = shadowing
-
-console.log(o.c); // 4
-// NOTE: search in child --> search in parent --> found!
-
-console.log(o.d); // undefined
-// NOTE: search in child --> search in parent -->
-// Object.prototype --> undefined
-
-// 2. Method:
-const parent = {
-  value: 2,
-  method() {
-    return this.value + 1;
-  },
+Box.prototype.getValue = function () {
+  return this.value;
 };
-console.log(parent.method()); // 3
 
-const child = {
-  __proto__: parent,
+// khởi tạo 1 method addValue = value + 1
+// sau đó lưu lên prototype của boxes[0,1,2]
+Box.prototype.addValue = function () {
+  return this.value + 1;
 };
-console.log(child.method()); // 3
 
-child.value = 4;
-// NOTE: Property shadowing
+const boxes = [new Box(1), new Box(2), new Box(3)];
+// boxes --> array.prototype --> object.proto --> null
 
-child.method(); // 5
-
-parent.method(); // 3
+// 
