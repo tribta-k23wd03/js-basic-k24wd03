@@ -38,3 +38,22 @@ const output = document.querySelector("#output");
 textBox.addEventListener("keydown", (event) => {
   output.textContent = `You pressed "${event.key}".`;
 });
+
+/**
+ * ==============================
+ * LESSON: Event: Form Validation
+ * ==============================
+ */
+
+const form = document.querySelector("form");
+const fName = document.getElementById("fName");
+const lName = document.getElementById("lName");
+
+const para = document.querySelector("p");
+
+form.addEventListener("submit", (e) => {
+  if (fName.value === "" || lName.value === "") {
+    e.preventDefault;
+    para.textContent = "You need to enter FirstName or LastName!!!";
+  }
+});
