@@ -57,3 +57,19 @@ form.addEventListener("submit", (e) => {
     para.textContent = "You need to enter FirstName or LastName!!!";
   }
 });
+
+/**
+ * ==============================
+ * LESSON: Event: Change Color Text.
+ * ==============================
+ */
+function changeText() {
+  const p = document.getElementById("pid");
+
+  p.style.color = "tomato";
+  p.style.fontSize = "18pt";
+}
+
+document.getElementById("btn-change").addEventListener("click", () => {
+  changeText();
+});
