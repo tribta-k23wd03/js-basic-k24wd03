@@ -7,4 +7,5 @@ function App() {
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+// root = <div><div className="color">Hello React ES6+</div></div>
 root.render(element(App));
